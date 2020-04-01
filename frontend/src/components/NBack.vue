@@ -6,7 +6,9 @@
     <!-- <button @click="getRandom">getRandom</button> -->
     <button @click="commence" :disabled="!terminated">Commence</button>
     <button @click="terminate" :disabled="terminated">Terminate</button>
-    <p>{{ random }}</p>
+    <p>
+      <font size="10">{{ random }}</font>
+    </p>
   </div>
 </template>
 
