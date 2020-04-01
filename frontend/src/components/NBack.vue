@@ -18,11 +18,11 @@ export default {
     return {
       terminated: true,
       randomSequence: [1, 2, 3, 3, 4, 5],
-      currentIndex: 0,
+      currentIndex: -1,
       random: null,
       // interval: null, // setInterval function
-      keydownSpace: false,
-      keydownSpaceSequence: [false, false, false, false, false, false]
+      keydownSpace: 0, // 0 for false, 1 for true
+      keydownSpaceSequence: null //[0, 0, 0, 0, 0, 0] // 0 for false, 1 for true
     };
   },
   // mounted, what will do when mounted the page
@@ -37,7 +37,7 @@ export default {
 
         let keydownSpaceSequence = vm.keydownSpaceSequence;
         let currentIndex = vm.currentIndex;
-        keydownSpaceSequence[currentIndex] = true;
+        keydownSpaceSequence[currentIndex] = 1;
         console.log(vm.keydownSpaceSequence);
         // console.log(currentIndex);
       }
@@ -62,11 +62,13 @@ export default {
       let currentIndex = this.currentIndex;
       let randomSequence = this.randomSequence;
       let len = randomSequence.length;
-      if (currentIndex >= len - 1) {
+      currentIndex++; // = currentIndex + 1;
+      this.currentIndex = currentIndex;
+      if (currentIndex > len - 1) {
         this.terminate();
       }
       this.random = this.randomSequence[currentIndex];
-      this.currentIndex = currentIndex + 1;
+
       setTimeout(() => {
         this.random = null;
       }, 1000);
@@ -76,7 +78,9 @@ export default {
     // },
     commence() {
       this.terminated = false;
-      this.currentIndex = 0;
+      this.currentIndex = -1;
+      this.keydownSpaceSequence = [0, 0, 0, 0, 0, 0];
+      this.getRandom();
       this.interval = setInterval(() => {
         // if () {return}  // terminating condition
         // this.keydownSpace = false;
