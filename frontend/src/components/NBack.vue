@@ -1,13 +1,28 @@
 <template>
   <div>
     <h1>This is NBack</h1>
+
     <p>{{ randomSequence }}</p>
     <!-- <p>{{ keydownSpaceSequence }}</p> -->
     <!-- <button @click="getRandom">getRandom</button> -->
-    <button @click="commence" :disabled="!terminated">Commence</button>
-    <button @click="terminate" :disabled="terminated">Terminate</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      @click="commence"
+      :disabled="!terminated"
+    >
+      Commence
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      @click="terminate"
+      :disabled="terminated"
+    >
+      Terminate
+    </button>
     <p>
-      <font size="10">{{ random }}</font>
+      <font size="100">{{ random }}</font>
     </p>
   </div>
 </template>
