@@ -1,6 +1,8 @@
 <template>
-  <div>
+  <div class="container">
     <h1>This is NBack</h1>
+
+    <font style="border:solid white" size="100">{{ random }}</font>
 
     <p>{{ randomSequence }}</p>
     <!-- <p>{{ keydownSpaceSequence }}</p> -->
@@ -21,9 +23,6 @@
     >
       Terminate
     </button>
-    <p>
-      <font size="100">{{ random }}</font>
-    </p>
   </div>
 </template>
 
@@ -115,4 +114,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
